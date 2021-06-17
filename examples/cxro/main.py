@@ -23,12 +23,15 @@ for idx, fn in enumerate(pathlib.Path("data").glob("*.nff")):
     # if idx == 1:
     #     break
 
-
-print(
-    plc_code.generate_lookup_table_source(
-        fb_name="FB_AbsorptionLUT",
-        dataframes=dataframes,
-        table_prefix="fTable_",
-        lookup_input="fEnergyEV",
-    )
+lut_source, test_source = plc_code.generate_lookup_table_source(
+    fb_name="FB_AbsorptionLUT",
+    dataframes=dataframes,
+    table_prefix="fTable_",
+    lookup_input="fEnergyEV",
 )
+
+with open("FB_AbsorptionLUT.TcPOU", "wt") as fp:
+    print(lut_source, file=fp)
+
+with open("FB_AbsorptionLUT_Test.TcPOU", "wt") as fp:
+    print(test_source, file=fp)

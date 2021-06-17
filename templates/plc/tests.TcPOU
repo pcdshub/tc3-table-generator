@@ -1,0 +1,21 @@
+FUNCTION_BLOCK {{ test_fb_name }} EXTENDS TcUnit.FB_TestSuite
+VAR
+    fbTest : {{ fb_name }};
+END_VAR
+
+{% for table in tables %}
+TEST('{{ table.name }}');
+fbTest.sTableName := '{{ table.name }}';
+
+{% for row in table.test_values %}
+fbTest({{ lookup_input }} := {{ row[lookup_input] }});
+AssertTrue(fbTest.bFound, 'Value should be in table');
+AssertFalse(fbTest.bError, 'No error expected');
+{% for output in outputs %}
+AssertEquals_LREAL(Expected:={{ row[output] }}, Actual:=fbTest.{{ output }}, Delta:=0.01,
+                   Message:='Failed at {{ row.values() | join(", ")}}');
+{% endfor %}
+{% endfor %}
+
+TEST_FINISHED();
+{% endfor %}
