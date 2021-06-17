@@ -1,8 +1,8 @@
 import decimal
-
 import pathlib
-import pandas as pd
 import sys
+
+import pandas as pd
 
 # Bad practices from the get-go, nice!
 sys.path.insert(0, "../../")  # noqa
@@ -18,8 +18,7 @@ columns = {
 dataframes = {}
 for idx, fn in enumerate(pathlib.Path("data").glob("*.nff")):
     dataframes[fn.stem] = pd.read_csv(
-        fn, delimiter="\t",
-        converters={col: decimal.Decimal for col in columns}
+        fn, delimiter="\t", converters={col: decimal.Decimal for col in columns}
     ).rename(columns=columns)
     # if idx == 1:
     #     break

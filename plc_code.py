@@ -1,17 +1,9 @@
 """Create Beckhoff TwinCAT PLC source code from a dataframe."""
-import sys
-import jinja2
-import uuid
 import logging
-
 import pathlib
-import matplotlib
-import numpy as np
-import pandas as pd
+import uuid
 
-matplotlib.use("Agg")  # noqa
-
-import matplotlib.pyplot as plt  # noqa
+import jinja2
 
 logger = logging.getLogger(__name__)
 
@@ -19,15 +11,13 @@ logger = logging.getLogger(__name__)
 # PLC file output settings:
 MODULE_PATH = pathlib.Path(__file__).resolve().parent
 
-pd.set_option("display.max_rows", 1000)
-
 
 def df_data_to_code(df):
+    """
+    Convert dataframe data to something insertable into the TcPOU VAR block.
+    """
     return "\n    ".join(
-        ", ".join(
-            str(value)
-            for attr, value in dict(row).items()
-        ) + ","
+        ", ".join(str(value) for attr, value in dict(row).items()) + ","
         for idx, (_, row) in enumerate(df.iterrows())
     ).rstrip(",")
 
@@ -40,7 +30,9 @@ def guid_from_table(fb_name, dfs):
     """
     total_rows = sum(len(df) for df in dfs.values())
     maybe_unique = (fb_name + list(dfs)[0] + str(total_rows)) * 2
-    logger.debug("Generating UUID from string: %s -> %s", maybe_unique, maybe_unique[:16])
+    logger.debug(
+        "Generating UUID from string: %s -> %s", maybe_unique, maybe_unique[:16]
+    )
     return uuid.UUID(bytes=maybe_unique.encode("utf-8")[:16])
 
 
