@@ -14,7 +14,15 @@ END_VAR
 (* WARNING: This file is auto-generated. Do not modify it.*)
 {% for table in tables %}
 TEST('Lookups for {{ table.identifier }}');
+
 fbTest.sTableName := '{{ table.identifier }}';
+
+fbTest({{ lookup_input }} := {{ table.first_lookup - 1.0 }});
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
+fbTest({{ lookup_input }} := {{ table.last_lookup + 1.0 }});
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
 
 {% for row in table.test_values %}
 fbTest({{ lookup_input }} := {{ row[lookup_input] }});

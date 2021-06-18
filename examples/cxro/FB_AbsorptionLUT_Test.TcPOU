@@ -13,8 +13,16 @@ END_VAR
       <ST><![CDATA[
 (* WARNING: This file is auto-generated. Do not modify it.*)
 
-TEST('Lookups_"Ge"');
+TEST('Lookups for Ge');
+
 fbTest.sTableName := 'Ge';
+
+fbTest(fEnergyEV := 9.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
+fbTest(fEnergyEV := 30001.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
 
 
 fbTest(fEnergyEV := 10.0000);
@@ -139,8 +147,16 @@ AssertEquals_LREAL(Expected:=32.31945, Actual:=fbTest.f1, Delta:=0.01, Message:=
 AssertEquals_LREAL(Expected:=0.8089761, Actual:=fbTest.f2, Delta:=0.01, Message:='Failed at 27821.64, 32.31945, 0.8089761');
 
 TEST_FINISHED();
-TEST('Lookups_"C"');
+TEST('Lookups for C');
+
 fbTest.sTableName := 'C';
+
+fbTest(fEnergyEV := 9.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
+fbTest(fEnergyEV := 30001.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
 
 
 fbTest(fEnergyEV := 10.0000);
@@ -265,8 +281,16 @@ AssertEquals_LREAL(Expected:=6.000049, Actual:=fbTest.f1, Delta:=0.01, Message:=
 AssertEquals_LREAL(Expected:=0.00045456319999999996, Actual:=fbTest.f2, Delta:=0.01, Message:='Failed at 29665.75, 6.000049, 0.00045456319999999996');
 
 TEST_FINISHED();
-TEST('Lookups_"Al"');
+TEST('Lookups for Al');
+
 fbTest.sTableName := 'Al';
+
+fbTest(fEnergyEV := 9.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
+fbTest(fEnergyEV := 30001.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
 
 
 fbTest(fEnergyEV := 10.0000);
@@ -391,8 +415,16 @@ AssertEquals_LREAL(Expected:=13.02243, Actual:=fbTest.f1, Delta:=0.01, Message:=
 AssertEquals_LREAL(Expected:=0.01808749, Actual:=fbTest.f2, Delta:=0.01, Message:='Failed at 28728.92, 13.02243, 0.01808749');
 
 TEST_FINISHED();
-TEST('Lookups_"Be"');
+TEST('Lookups for Be');
+
 fbTest.sTableName := 'Be';
+
+fbTest(fEnergyEV := 9.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
+fbTest(fEnergyEV := 30001.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
 
 
 fbTest(fEnergyEV := 10.0000);
@@ -517,8 +549,16 @@ AssertEquals_LREAL(Expected:=3.9996840000000002, Actual:=fbTest.f1, Delta:=0.01,
 AssertEquals_LREAL(Expected:=7.864154999999999e-05, Actual:=fbTest.f2, Delta:=0.01, Message:='Failed at 29193.47, 3.9996840000000002, 7.864154999999999e-05');
 
 TEST_FINISHED();
-TEST('Lookups_"Si"');
+TEST('Lookups for Si');
+
 fbTest.sTableName := 'Si';
+
+fbTest(fEnergyEV := 9.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
+fbTest(fEnergyEV := 30001.0);
+AssertFalse(fbTest.bFound, 'Value should not be in table');
+AssertFalse(fbTest.bError, 'No error expected');
 
 
 fbTest(fEnergyEV := 10.0000);

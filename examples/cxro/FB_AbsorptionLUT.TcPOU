@@ -3090,7 +3090,7 @@ ELSIF fEnergyEV > fHigh THEN
     RETURN;
 END_IF
 
-FOR iRowIdx := 0 TO iRowCount - 2
+FOR iRowIdx := 0 TO iRowCount - 1
 DO
     fRow2Ptr := fRow1Ptr + iRowSize;
     IF fEnergyEV >= fRow1Ptr^ AND fEnergyEV <= fRow2Ptr^ THEN

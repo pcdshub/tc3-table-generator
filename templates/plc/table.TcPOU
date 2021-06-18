@@ -65,7 +65,7 @@ ELSIF {{ lookup_input }} > fHigh THEN
     RETURN;
 END_IF
 
-FOR iRowIdx := 0 TO iRowCount - 2
+FOR iRowIdx := 0 TO iRowCount - 1
 DO
     fRow2Ptr := fRow1Ptr + iRowSize;
     IF {{ lookup_input }} >= fRow1Ptr^ AND {{ lookup_input }} <= fRow2Ptr^ THEN
