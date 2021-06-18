@@ -1,11 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+    <POU Name="{{ test_fb_name }}" Id="{{ '{' -}} {{ pou_guid }} {{- '}' }}" SpecialFunc="None">
+    <Declaration><![CDATA[
+(* WARNING: This file is auto-generated. Do not modify it.*)
 FUNCTION_BLOCK {{ test_fb_name }} EXTENDS TcUnit.FB_TestSuite
 VAR
     fbTest : {{ fb_name }};
 END_VAR
 
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* WARNING: This file is auto-generated. Do not modify it.*)
 {% for table in tables %}
-TEST('{{ table.name }}');
-fbTest.sTableName := '{{ table.name }}';
+TEST('Lookups for {{ table.identifier }}');
+fbTest.sTableName := '{{ table.identifier }}';
 
 {% for row in table.test_values %}
 fbTest({{ lookup_input }} := {{ row[lookup_input] }});
@@ -17,4 +26,8 @@ AssertEquals_LREAL(Expected:={{ row[output] }}, Actual:=fbTest.{{ output }}, Del
 {%- endfor %}
 
 TEST_FINISHED();
-{% endfor %}
+{%- endfor %}
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

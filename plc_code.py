@@ -3,6 +3,7 @@ import logging
 import pathlib
 import uuid
 
+import hashlib
 import jinja2
 import numpy as np
 import pandas as pd
@@ -35,11 +36,14 @@ def guid_from_table(fb_name, dfs):
     This may not be perfect, so let's choose our FB names wisely.
     """
     total_rows = sum(len(df) for df in dfs.values())
-    maybe_unique = (fb_name + list(dfs)[0] + str(total_rows)) * 2
+
+    maybe_unique = fb_name + ",".join(list(dfs)) + str(total_rows)
+    # Sorry, we only have 16 bytes in our UUIDs...
+    hashed = hashlib.md5(maybe_unique.encode("utf-8")).digest()
     logger.debug(
-        "Generating UUID from string: %s -> %s", maybe_unique, maybe_unique[:16]
+        "Generating UUID from string: %s -> %s", maybe_unique, hashed
     )
-    return uuid.UUID(bytes=maybe_unique.encode("utf-8")[:16])
+    return uuid.UUID(bytes=hashed)
 
 
 def generate_test_values(df: pd.DataFrame, count: int):

@@ -15,13 +15,26 @@ columns = {
     "f2": "f2",
 }
 
+included_materials = {
+    "Al",
+    "Be",
+    "C",
+    "Ge",
+    "Si",
+}
+
 dataframes = {}
 for idx, fn in enumerate(pathlib.Path("data").glob("*.nff")):
-    dataframes[fn.stem] = pd.read_csv(
-        fn, delimiter="\t", converters={col: decimal.Decimal for col in columns}
-    ).rename(columns=columns)
+    identifier = fn.stem.capitalize()
+    if identifier in included_materials:
+        dataframes[identifier] = pd.read_csv(
+            fn, delimiter="\t", converters={col: decimal.Decimal for col in columns}
+        ).rename(columns=columns)
     # if idx == 1:
     #     break
+
+assert set(dataframes) == included_materials
+
 
 lut_source, test_source = plc_code.generate_lookup_table_source(
     fb_name="FB_AbsorptionLUT",
