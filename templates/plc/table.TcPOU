@@ -17,15 +17,14 @@ VAR_OUTPUT
 END_VAR
 VAR
     iRowSize : UDINT;
-    fRow1Ptr : POINTER TO {{data_type}};
-    fRow2Ptr : POINTER TO {{data_type}};
-    fRow1Lookup : {{data_type}};
+    fRow1 : POINTER TO ARRAY[0..{{ tables[0].bounds[1] }}] OF LREAL;
+    fRow2 : POINTER TO ARRAY[0..{{ tables[0].bounds[1] }}] OF LREAL;
     {{ row_delta }} : {{data_type}};
     
     iRowCount : UDINT;
     iRowIdx : UDINT;
-    fLow: {{data_type}};
-    fHigh: {{data_type}};
+    fTableLookupLow: {{data_type}};
+    fTableLookupHigh: {{data_type}};
     fSlope : {{data_type}};
     
 END_VAR
@@ -46,9 +45,9 @@ END_VAR
 {% if loop.index == 1 %}IF{% else %}ELSIF{% endif %} sTableName = '{{ table.identifier }}' THEN
     iRowSize := ADR({{ table.name }}[1,0]) - ADR({{ table.name }}[0,0]);
     iRowCount := {{ table.bounds[0] }};
-    fRow1Ptr := ADR({{ table.name }}[0, 0]);
-    fLow := {{ table.df.iloc[0, 0] }};
-    fHigh := {{ table.df.iloc[-1, 0] }};
+    fRow1 := ADR({{ table.name }}[0, 0]);
+    fTableLookupLow := {{ table.df.iloc[0, lookup_index] }};
+    fTableLookupHigh := {{ table.df.iloc[-1, lookup_index] }};
 {%- endfor %}
 ELSE
     bFound := FALSE;
@@ -59,36 +58,32 @@ END_IF
 bError := FALSE;
 bFound := FALSE;
 
-IF {{ lookup_input }} < fLow THEN
+IF {{ lookup_input }} < fTableLookupLow THEN
     RETURN;
-ELSIF {{ lookup_input }} > fHigh THEN
+ELSIF {{ lookup_input }} > fTableLookupHigh THEN
     RETURN;
 END_IF
 
 FOR iRowIdx := 0 TO iRowCount - 1
 DO
-    fRow2Ptr := fRow1Ptr + iRowSize;
-    IF {{ lookup_input }} >= fRow1Ptr^ AND {{ lookup_input }} <= fRow2Ptr^ THEN
-        {{ row_delta }} := fRow2Ptr^ - fRow1Ptr^;
+    fRow2 := fRow1 + iRowSize;
+    IF {{ lookup_input }} >= fRow1^[{{ lookup_index }}] AND {{ lookup_input }} <= fRow2^[{{ lookup_index }}] THEN
+        {{ row_delta }} := fRow2^[{{ lookup_index }}] - fRow1^[{{ lookup_index }}];
         IF {{ row_delta }} <= 0.0 THEN
             bFound := TRUE;
             bError := TRUE;
         ELSE
-            fRow1Lookup := fRow1Ptr^;
-
 {% for output in outputs %}
             // Interpolate output: {{ output }}
-            fRow1Ptr := fRow1Ptr + SIZEOF({{data_type}}); 
-            fRow2Ptr := fRow2Ptr + SIZEOF({{data_type}}); 
-            fSlope := (fRow2Ptr^ - fRow1Ptr^) / {{ row_delta }};
-            {{ output }} := fRow1Ptr^ + fSlope * ({{ lookup_input }} - fRow1Lookup);
+            fSlope := (fRow2^[{{ loop.index }}] - fRow1^[{{ loop.index }}]) / {{ row_delta }};
+            {{ output }} := fRow1^[{{ loop.index}}] + fSlope * ({{ lookup_input }} - fRow1^[{{ lookup_index }}]);
 {% endfor %} 
             bFound := TRUE;
             bError := FALSE;
         END_IF
         RETURN;
     END_IF
-    fRow1Ptr := fRow2Ptr;
+    fRow1 := fRow2;
 END_FOR
 
 ]]></ST>

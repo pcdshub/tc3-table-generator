@@ -108,6 +108,7 @@ def generate_lookup_table_source(
     guid: str = "",
     table_prefix: str = "fTable_",
     lookup_input: str = "fLookup",
+    lookup_index: int = 0,
     row_delta_variable: str = "",
     test_fb_name: str = "",
 ) -> Tuple[str, str]:
@@ -144,6 +145,10 @@ def generate_lookup_table_source(
         The function block input variable name - the indexed parameter which
         you're looking up in the table.
 
+    lookup_index : int, optional
+        The per-row array index of the lookup value.  Not fully supported
+        just let; leave this at 0 for now.
+
     row_delta_variable : str, optional
         The auto-generated code delta variable.  Not necessary to set, unless
         you really want to customize the output.
@@ -164,6 +169,7 @@ def generate_lookup_table_source(
         outputs=sample_df.columns[1:],
         data_type=data_type,
         lookup_input=lookup_input,
+        lookup_index=lookup_index,
         row_delta=row_delta_variable or (lookup_input + "_RowDelta"),
     )
     template = jinja2.Template(open(LUT_TEMPLATE, "rt").read())

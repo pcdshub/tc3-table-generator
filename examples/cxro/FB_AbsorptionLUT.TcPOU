@@ -16,15 +16,14 @@ VAR_OUTPUT
 END_VAR
 VAR
     iRowSize : UDINT;
-    fRow1Ptr : POINTER TO LREAL;
-    fRow2Ptr : POINTER TO LREAL;
-    fRow1Lookup : LREAL;
+    fRow1 : POINTER TO ARRAY[0..2] OF LREAL;
+    fRow2 : POINTER TO ARRAY[0..2] OF LREAL;
     fEnergyEV_RowDelta : LREAL;
     
     iRowCount : UDINT;
     iRowIdx : UDINT;
-    fLow: LREAL;
-    fHigh: LREAL;
+    fTableLookupLow: LREAL;
+    fTableLookupHigh: LREAL;
     fSlope : LREAL;
     
 END_VAR
@@ -3048,33 +3047,33 @@ END_VAR
 IF sTableName = 'Ge' THEN
     iRowSize := ADR(fTable_Ge[1,0]) - ADR(fTable_Ge[0,0]);
     iRowCount := 505;
-    fRow1Ptr := ADR(fTable_Ge[0, 0]);
-    fLow := 10.0000;
-    fHigh := 30000.0;
+    fRow1 := ADR(fTable_Ge[0, 0]);
+    fTableLookupLow := 10.0000;
+    fTableLookupHigh := 30000.0;
 ELSIF sTableName = 'C' THEN
     iRowSize := ADR(fTable_C[1,0]) - ADR(fTable_C[0,0]);
     iRowCount := 501;
-    fRow1Ptr := ADR(fTable_C[0, 0]);
-    fLow := 10.0000;
-    fHigh := 30000.0;
+    fRow1 := ADR(fTable_C[0, 0]);
+    fTableLookupLow := 10.0000;
+    fTableLookupHigh := 30000.0;
 ELSIF sTableName = 'Al' THEN
     iRowSize := ADR(fTable_Al[1,0]) - ADR(fTable_Al[0,0]);
     iRowCount := 503;
-    fRow1Ptr := ADR(fTable_Al[0, 0]);
-    fLow := 10.0000;
-    fHigh := 30000.0;
+    fRow1 := ADR(fTable_Al[0, 0]);
+    fTableLookupLow := 10.0000;
+    fTableLookupHigh := 30000.0;
 ELSIF sTableName = 'Be' THEN
     iRowSize := ADR(fTable_Be[1,0]) - ADR(fTable_Be[0,0]);
     iRowCount := 723;
-    fRow1Ptr := ADR(fTable_Be[0, 0]);
-    fLow := 10.0000;
-    fHigh := 30000.0;
+    fRow1 := ADR(fTable_Be[0, 0]);
+    fTableLookupLow := 10.0000;
+    fTableLookupHigh := 30000.0;
 ELSIF sTableName = 'Si' THEN
     iRowSize := ADR(fTable_Si[1,0]) - ADR(fTable_Si[0,0]);
     iRowCount := 755;
-    fRow1Ptr := ADR(fTable_Si[0, 0]);
-    fLow := 10.0000;
-    fHigh := 30000.0;
+    fRow1 := ADR(fTable_Si[0, 0]);
+    fTableLookupLow := 10.0000;
+    fTableLookupHigh := 30000.0;
 ELSE
     bFound := FALSE;
     bError := TRUE;
@@ -3084,42 +3083,36 @@ END_IF
 bError := FALSE;
 bFound := FALSE;
 
-IF fEnergyEV < fLow THEN
+IF fEnergyEV < fTableLookupLow THEN
     RETURN;
-ELSIF fEnergyEV > fHigh THEN
+ELSIF fEnergyEV > fTableLookupHigh THEN
     RETURN;
 END_IF
 
 FOR iRowIdx := 0 TO iRowCount - 1
 DO
-    fRow2Ptr := fRow1Ptr + iRowSize;
-    IF fEnergyEV >= fRow1Ptr^ AND fEnergyEV <= fRow2Ptr^ THEN
-        fEnergyEV_RowDelta := fRow2Ptr^ - fRow1Ptr^;
+    fRow2 := fRow1 + iRowSize;
+    IF fEnergyEV >= fRow1^[0] AND fEnergyEV <= fRow2^[0] THEN
+        fEnergyEV_RowDelta := fRow2^[0] - fRow1^[0];
         IF fEnergyEV_RowDelta <= 0.0 THEN
             bFound := TRUE;
             bError := TRUE;
         ELSE
-            fRow1Lookup := fRow1Ptr^;
-
 
             // Interpolate output: f1
-            fRow1Ptr := fRow1Ptr + SIZEOF(LREAL); 
-            fRow2Ptr := fRow2Ptr + SIZEOF(LREAL); 
-            fSlope := (fRow2Ptr^ - fRow1Ptr^) / fEnergyEV_RowDelta;
-            f1 := fRow1Ptr^ + fSlope * (fEnergyEV - fRow1Lookup);
+            fSlope := (fRow2^[1] - fRow1^[1]) / fEnergyEV_RowDelta;
+            f1 := fRow1^[1] + fSlope * (fEnergyEV - fRow1^[0]);
 
             // Interpolate output: f2
-            fRow1Ptr := fRow1Ptr + SIZEOF(LREAL); 
-            fRow2Ptr := fRow2Ptr + SIZEOF(LREAL); 
-            fSlope := (fRow2Ptr^ - fRow1Ptr^) / fEnergyEV_RowDelta;
-            f2 := fRow1Ptr^ + fSlope * (fEnergyEV - fRow1Lookup);
+            fSlope := (fRow2^[2] - fRow1^[2]) / fEnergyEV_RowDelta;
+            f2 := fRow1^[2] + fSlope * (fEnergyEV - fRow1^[0]);
  
             bFound := TRUE;
             bError := FALSE;
         END_IF
         RETURN;
     END_IF
-    fRow1Ptr := fRow2Ptr;
+    fRow1 := fRow2;
 END_FOR
 
 ]]></ST>
