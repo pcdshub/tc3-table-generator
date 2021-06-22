@@ -33,14 +33,14 @@ assert set(dataframes) == included_materials
 
 
 lut_source, test_source = tc3tg.generate_lookup_table_source(
-    fb_name="FB_AbsorptionLUT",
+    fb_name="FB_ScatteringFactorLUT",
     dataframes=dataframes,
     table_prefix="fTable_",
     lookup_input="fEnergyEV",
 )
 
-with open("FB_AbsorptionLUT.TcPOU", "wt") as fp:
+with open("FB_ScatteringFactorLUT.TcPOU", "wt") as fp:
     print(lut_source, file=fp)
 
-with open("FB_AbsorptionLUT_Test.TcPOU", "wt") as fp:
+with open("FB_ScatteringFactorLUT_Test.TcPOU", "wt") as fp:
     print(test_source, file=fp)

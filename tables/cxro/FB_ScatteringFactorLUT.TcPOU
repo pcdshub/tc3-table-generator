@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-    <POU Name="FB_AbsorptionLUT" Id="{bcc5442f-16ea-00be-b111-68f89e3450e2}" SpecialFunc="None">
+    <POU Name="FB_ScatteringFactorLUT" Id="{01ad8d01-6b90-c34c-086b-4fed4a9c1079}" SpecialFunc="None">
     <Declaration><![CDATA[
 (* WARNING: This file is auto-generated. Do not modify it.*)
-FUNCTION_BLOCK FB_AbsorptionLUT
+FUNCTION_BLOCK FB_ScatteringFactorLUT
 VAR_INPUT
     sTableName : STRING;
     fEnergyEV : LREAL;
