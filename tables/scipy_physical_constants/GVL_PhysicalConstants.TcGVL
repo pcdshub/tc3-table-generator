@@ -42,273 +42,273 @@ VAR_GLOBAL CONSTANT
     
     // atomic unit of magn. dipole moment (J T^-1)
     // Uncertainty: 1.6e-30
-    fAtomicUnitOfMagn_DipoleMoment_in_J_T_1 : LREAL := 1.8548019e-23;
-    fAtomicUnitOfMagn_DipoleMoment_in_J_T_1_Units : STRING := 'J T^-1';
-    fAtomicUnitOfMagn_DipoleMoment_in_J_T_1_Uncertainty : LREAL := 1.6e-30;
+    fAtomicUnitOfMagneticDipoleMoment_in_J_T_1 : LREAL := 1.8548019e-23;
+    fAtomicUnitOfMagneticDipoleMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fAtomicUnitOfMagneticDipoleMoment_in_J_T_1_Uncertainty : LREAL := 1.6e-30;
     
     // atomic unit of magn. flux density (T)
     // Uncertainty: 7.1e-05
-    fAtomicUnitOfMagn_FluxDensity_in_T : LREAL := 235051.756758;
-    fAtomicUnitOfMagn_FluxDensity_in_T_Units : STRING := 'T';
-    fAtomicUnitOfMagn_FluxDensity_in_T_Uncertainty : LREAL := 7.1e-05;
+    fAtomicUnitOfMagneticFluxDensity_in_T : LREAL := 235051.756758;
+    fAtomicUnitOfMagneticFluxDensity_in_T_Units : STRING := 'T';
+    fAtomicUnitOfMagneticFluxDensity_in_T_Uncertainty : LREAL := 7.1e-05;
     
     // deuteron magn. moment (J T^-1)
     // Uncertainty: 3.8e-34
-    fDeuteronMagn_Moment_in_J_T_1 : LREAL := 4.33073482e-27;
-    fDeuteronMagn_Moment_in_J_T_1_Units : STRING := 'J T^-1';
-    fDeuteronMagn_Moment_in_J_T_1_Uncertainty : LREAL := 3.8e-34;
+    fDeuteronMagneticMoment_in_J_T_1 : LREAL := 4.33073482e-27;
+    fDeuteronMagneticMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fDeuteronMagneticMoment_in_J_T_1_Uncertainty : LREAL := 3.8e-34;
     
     // deuteron magn. moment to Bohr magneton ratio
     // Uncertainty: 5e-12
-    fDeuteronMagn_MomentToBohrMagnetonRatio : LREAL := 0.0004669754567;
-    fDeuteronMagn_MomentToBohrMagnetonRatio_Uncertainty : LREAL := 5e-12;
+    fDeuteronMagneticMomentToBohrMagnetonRatio : LREAL := 0.0004669754567;
+    fDeuteronMagneticMomentToBohrMagnetonRatio_Uncertainty : LREAL := 5e-12;
     
     // deuteron magn. moment to nuclear magneton ratio
     // Uncertainty: 9.2e-09
-    fDeuteronMagn_MomentToNuclearMagnetonRatio : LREAL := 0.8574382329;
-    fDeuteronMagn_MomentToNuclearMagnetonRatio_Uncertainty : LREAL := 9.2e-09;
+    fDeuteronMagneticMomentToNuclearMagnetonRatio : LREAL := 0.8574382329;
+    fDeuteronMagneticMomentToNuclearMagnetonRatio_Uncertainty : LREAL := 9.2e-09;
     
     // deuteron-electron magn. moment ratio
     // Uncertainty: 5e-12
-    fDeuteronElectronMagn_MomentRatio : LREAL := -0.0004664345548;
-    fDeuteronElectronMagn_MomentRatio_Uncertainty : LREAL := 5e-12;
+    fDeuteronElectronMagneticMomentRatio : LREAL := -0.0004664345548;
+    fDeuteronElectronMagneticMomentRatio_Uncertainty : LREAL := 5e-12;
     
     // deuteron-proton magn. moment ratio
     // Uncertainty: 4.5e-09
-    fDeuteronProtonMagn_MomentRatio : LREAL := 0.3070122084;
-    fDeuteronProtonMagn_MomentRatio_Uncertainty : LREAL := 4.5e-09;
+    fDeuteronProtonMagneticMomentRatio : LREAL := 0.3070122084;
+    fDeuteronProtonMagneticMomentRatio_Uncertainty : LREAL := 4.5e-09;
     
     // deuteron-neutron magn. moment ratio
     // Uncertainty: 1.1e-07
-    fDeuteronNeutronMagn_MomentRatio : LREAL := -0.44820652;
-    fDeuteronNeutronMagn_MomentRatio_Uncertainty : LREAL := 1.1e-07;
+    fDeuteronNeutronMagneticMomentRatio : LREAL := -0.44820652;
+    fDeuteronNeutronMagneticMomentRatio_Uncertainty : LREAL := 1.1e-07;
     
     // electron gyromagn. ratio (s^-1 T^-1)
     // Uncertainty: 53.0
-    fElectronGyromagn_Ratio_in_s_1_T_1 : LREAL := 176085963023.0;
-    fElectronGyromagn_Ratio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
-    fElectronGyromagn_Ratio_in_s_1_T_1_Uncertainty : LREAL := 53.0;
+    fElectronGyromagneticRatio_in_s_1_T_1 : LREAL := 176085963023.0;
+    fElectronGyromagneticRatio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
+    fElectronGyromagneticRatio_in_s_1_T_1_Uncertainty : LREAL := 53.0;
     
     // electron gyromagn. ratio over 2 pi (MHz T^-1)
     // Uncertainty: 0.0024
-    fElectronGyromagn_RatioOver2Pi_in_MHz_T_1 : LREAL := 28024.9532;
-    fElectronGyromagn_RatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
-    fElectronGyromagn_RatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 0.0024;
+    fElectronGyromagneticRatioOver2Pi_in_MHz_T_1 : LREAL := 28024.9532;
+    fElectronGyromagneticRatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
+    fElectronGyromagneticRatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 0.0024;
     
     // electron magn. moment (J T^-1)
     // Uncertainty: 8e-31
-    fElectronMagn_Moment_in_J_T_1 : LREAL := -9.28476412e-24;
-    fElectronMagn_Moment_in_J_T_1_Units : STRING := 'J T^-1';
-    fElectronMagn_Moment_in_J_T_1_Uncertainty : LREAL := 8e-31;
+    fElectronMagneticMoment_in_J_T_1 : LREAL := -9.28476412e-24;
+    fElectronMagneticMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fElectronMagneticMoment_in_J_T_1_Uncertainty : LREAL := 8e-31;
     
     // electron magn. moment to Bohr magneton ratio
     // Uncertainty: 3.8e-12
-    fElectronMagn_MomentToBohrMagnetonRatio : LREAL := -1.0011596521859;
-    fElectronMagn_MomentToBohrMagnetonRatio_Uncertainty : LREAL := 3.8e-12;
+    fElectronMagneticMomentToBohrMagnetonRatio : LREAL := -1.0011596521859;
+    fElectronMagneticMomentToBohrMagnetonRatio_Uncertainty : LREAL := 3.8e-12;
     
     // electron magn. moment to nuclear magneton ratio
     // Uncertainty: 8.5e-07
-    fElectronMagn_MomentToNuclearMagnetonRatio : LREAL := -1838.28197107;
-    fElectronMagn_MomentToNuclearMagnetonRatio_Uncertainty : LREAL := 8.5e-07;
+    fElectronMagneticMomentToNuclearMagnetonRatio : LREAL := -1838.28197107;
+    fElectronMagneticMomentToNuclearMagnetonRatio_Uncertainty : LREAL := 8.5e-07;
     
     // electron magn. moment anomaly
     // Uncertainty: 3.8e-12
-    fElectronMagn_MomentAnomaly : LREAL := 0.0011596521859;
-    fElectronMagn_MomentAnomaly_Uncertainty : LREAL := 3.8e-12;
+    fElectronMagneticMomentAnomaly : LREAL := 0.0011596521859;
+    fElectronMagneticMomentAnomaly_Uncertainty : LREAL := 3.8e-12;
     
     // electron to shielded proton magn. moment ratio
     // Uncertainty: 7.1e-06
-    fElectronToShieldedProtonMagn_MomentRatio : LREAL := -658.2275956;
-    fElectronToShieldedProtonMagn_MomentRatio_Uncertainty : LREAL := 7.1e-06;
+    fElectronToShieldedProtonMagneticMomentRatio : LREAL := -658.2275956;
+    fElectronToShieldedProtonMagneticMomentRatio_Uncertainty : LREAL := 7.1e-06;
     
     // electron to shielded helion magn. moment ratio
     // Uncertainty: 1e-05
-    fElectronToShieldedHelionMagn_MomentRatio : LREAL := 864.058255;
-    fElectronToShieldedHelionMagn_MomentRatio_Uncertainty : LREAL := 1e-05;
+    fElectronToShieldedHelionMagneticMomentRatio : LREAL := 864.058255;
+    fElectronToShieldedHelionMagneticMomentRatio_Uncertainty : LREAL := 1e-05;
     
     // electron-deuteron magn. moment ratio
     // Uncertainty: 2.3e-05
-    fElectronDeuteronMagn_MomentRatio : LREAL := -2143.923493;
-    fElectronDeuteronMagn_MomentRatio_Uncertainty : LREAL := 2.3e-05;
+    fElectronDeuteronMagneticMomentRatio : LREAL := -2143.923493;
+    fElectronDeuteronMagneticMomentRatio_Uncertainty : LREAL := 2.3e-05;
     
     // electron-muon magn. moment ratio
     // Uncertainty: 5.4e-06
-    fElectronMuonMagn_MomentRatio : LREAL := 206.7669894;
-    fElectronMuonMagn_MomentRatio_Uncertainty : LREAL := 5.4e-06;
+    fElectronMuonMagneticMomentRatio : LREAL := 206.7669894;
+    fElectronMuonMagneticMomentRatio_Uncertainty : LREAL := 5.4e-06;
     
     // electron-neutron magn. moment ratio
     // Uncertainty: 0.00023
-    fElectronNeutronMagn_MomentRatio : LREAL := 960.9205;
-    fElectronNeutronMagn_MomentRatio_Uncertainty : LREAL := 0.00023;
+    fElectronNeutronMagneticMomentRatio : LREAL := 960.9205;
+    fElectronNeutronMagneticMomentRatio_Uncertainty : LREAL := 0.00023;
     
     // electron-proton magn. moment ratio
     // Uncertainty: 6.6e-06
-    fElectronProtonMagn_MomentRatio : LREAL := -658.2106862;
-    fElectronProtonMagn_MomentRatio_Uncertainty : LREAL := 6.6e-06;
+    fElectronProtonMagneticMomentRatio : LREAL := -658.2106862;
+    fElectronProtonMagneticMomentRatio_Uncertainty : LREAL := 6.6e-06;
     
     // magn. constant (N A^-2)
-    fMagn_Constant_in_N_A_2 : LREAL := 1.2566370614e-06;
-    fMagn_Constant_in_N_A_2_Units : STRING := 'N A^-2';
+    fMagneticConstant_in_N_A_2 : LREAL := 1.2566370614e-06;
+    fMagneticConstant_in_N_A_2_Units : STRING := 'N A^-2';
     
     // magn. flux quantum (Wb)
-    fMagn_FluxQuantum_in_Wb : LREAL := 2.067833848e-15;
-    fMagn_FluxQuantum_in_Wb_Units : STRING := 'Wb';
+    fMagneticFluxQuantum_in_Wb : LREAL := 2.067833848e-15;
+    fMagneticFluxQuantum_in_Wb_Units : STRING := 'Wb';
     
     // muon magn. moment (J T^-1)
     // Uncertainty: 4e-33
-    fMuonMagn_Moment_in_J_T_1 : LREAL := -4.49044799e-26;
-    fMuonMagn_Moment_in_J_T_1_Units : STRING := 'J T^-1';
-    fMuonMagn_Moment_in_J_T_1_Uncertainty : LREAL := 4e-33;
+    fMuonMagneticMoment_in_J_T_1 : LREAL := -4.49044799e-26;
+    fMuonMagneticMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fMuonMagneticMoment_in_J_T_1_Uncertainty : LREAL := 4e-33;
     
     // muon magn. moment to Bohr magneton ratio
     // Uncertainty: 1.3e-10
-    fMuonMagn_MomentToBohrMagnetonRatio : LREAL := -0.00484197045;
-    fMuonMagn_MomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.3e-10;
+    fMuonMagneticMomentToBohrMagnetonRatio : LREAL := -0.00484197045;
+    fMuonMagneticMomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.3e-10;
     
     // muon magn. moment to nuclear magneton ratio
     // Uncertainty: 2.3e-07
-    fMuonMagn_MomentToNuclearMagnetonRatio : LREAL := -8.89059698;
-    fMuonMagn_MomentToNuclearMagnetonRatio_Uncertainty : LREAL := 2.3e-07;
+    fMuonMagneticMomentToNuclearMagnetonRatio : LREAL := -8.89059698;
+    fMuonMagneticMomentToNuclearMagnetonRatio_Uncertainty : LREAL := 2.3e-07;
     
     // muon-proton magn. moment ratio
     // Uncertainty: 8.9e-08
-    fMuonProtonMagn_MomentRatio : LREAL := -3.183345118;
-    fMuonProtonMagn_MomentRatio_Uncertainty : LREAL := 8.9e-08;
+    fMuonProtonMagneticMomentRatio : LREAL := -3.183345118;
+    fMuonProtonMagneticMomentRatio_Uncertainty : LREAL := 8.9e-08;
     
     // neutron gyromagn. ratio (s^-1 T^-1)
     // Uncertainty: 43.0
-    fNeutronGyromagn_Ratio_in_s_1_T_1 : LREAL := 183247171.0;
-    fNeutronGyromagn_Ratio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
-    fNeutronGyromagn_Ratio_in_s_1_T_1_Uncertainty : LREAL := 43.0;
+    fNeutronGyromagneticRatio_in_s_1_T_1 : LREAL := 183247171.0;
+    fNeutronGyromagneticRatio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
+    fNeutronGyromagneticRatio_in_s_1_T_1_Uncertainty : LREAL := 43.0;
     
     // neutron gyromagn. ratio over 2 pi (MHz T^-1)
     // Uncertainty: 7.3e-06
-    fNeutronGyromagn_RatioOver2Pi_in_MHz_T_1 : LREAL := 29.164695;
-    fNeutronGyromagn_RatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
-    fNeutronGyromagn_RatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 7.3e-06;
+    fNeutronGyromagneticRatioOver2Pi_in_MHz_T_1 : LREAL := 29.164695;
+    fNeutronGyromagneticRatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
+    fNeutronGyromagneticRatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 7.3e-06;
     
     // neutron magn. moment (J T^-1)
     // Uncertainty: 2.4e-33
-    fNeutronMagn_Moment_in_J_T_1 : LREAL := -9.6623645e-27;
-    fNeutronMagn_Moment_in_J_T_1_Units : STRING := 'J T^-1';
-    fNeutronMagn_Moment_in_J_T_1_Uncertainty : LREAL := 2.4e-33;
+    fNeutronMagneticMoment_in_J_T_1 : LREAL := -9.6623645e-27;
+    fNeutronMagneticMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fNeutronMagneticMoment_in_J_T_1_Uncertainty : LREAL := 2.4e-33;
     
     // neutron magn. moment to Bohr magneton ratio
     // Uncertainty: 2.5e-10
-    fNeutronMagn_MomentToBohrMagnetonRatio : LREAL := -0.00104187563;
-    fNeutronMagn_MomentToBohrMagnetonRatio_Uncertainty : LREAL := 2.5e-10;
+    fNeutronMagneticMomentToBohrMagnetonRatio : LREAL := -0.00104187563;
+    fNeutronMagneticMomentToBohrMagnetonRatio_Uncertainty : LREAL := 2.5e-10;
     
     // neutron magn. moment to nuclear magneton ratio
     // Uncertainty: 4.5e-07
-    fNeutronMagn_MomentToNuclearMagnetonRatio : LREAL := -1.91304273;
-    fNeutronMagn_MomentToNuclearMagnetonRatio_Uncertainty : LREAL := 4.5e-07;
+    fNeutronMagneticMomentToNuclearMagnetonRatio : LREAL := -1.91304273;
+    fNeutronMagneticMomentToNuclearMagnetonRatio_Uncertainty : LREAL := 4.5e-07;
     
     // neutron to shielded proton magn. moment ratio
     // Uncertainty: 1.6e-07
-    fNeutronToShieldedProtonMagn_MomentRatio : LREAL := -0.68499694;
-    fNeutronToShieldedProtonMagn_MomentRatio_Uncertainty : LREAL := 1.6e-07;
+    fNeutronToShieldedProtonMagneticMomentRatio : LREAL := -0.68499694;
+    fNeutronToShieldedProtonMagneticMomentRatio_Uncertainty : LREAL := 1.6e-07;
     
     // neutron-electron magn. moment ratio
     // Uncertainty: 2.5e-10
-    fNeutronElectronMagn_MomentRatio : LREAL := 0.00104066882;
-    fNeutronElectronMagn_MomentRatio_Uncertainty : LREAL := 2.5e-10;
+    fNeutronElectronMagneticMomentRatio : LREAL := 0.00104066882;
+    fNeutronElectronMagneticMomentRatio_Uncertainty : LREAL := 2.5e-10;
     
     // neutron-proton magn. moment ratio
     // Uncertainty: 1.6e-07
-    fNeutronProtonMagn_MomentRatio : LREAL := -0.68497934;
-    fNeutronProtonMagn_MomentRatio_Uncertainty : LREAL := 1.6e-07;
+    fNeutronProtonMagneticMomentRatio : LREAL := -0.68497934;
+    fNeutronProtonMagneticMomentRatio_Uncertainty : LREAL := 1.6e-07;
     
     // proton gyromagn. ratio (s^-1 T^-1)
     // Uncertainty: 0.11
-    fProtonGyromagn_Ratio_in_s_1_T_1 : LREAL := 267522187.44;
-    fProtonGyromagn_Ratio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
-    fProtonGyromagn_Ratio_in_s_1_T_1_Uncertainty : LREAL := 0.11;
+    fProtonGyromagneticRatio_in_s_1_T_1 : LREAL := 267522187.44;
+    fProtonGyromagneticRatio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
+    fProtonGyromagneticRatio_in_s_1_T_1_Uncertainty : LREAL := 0.11;
     
     // proton gyromagn. ratio over 2 pi (MHz T^-1)
     // Uncertainty: 3.7e-06
-    fProtonGyromagn_RatioOver2Pi_in_MHz_T_1 : LREAL := 42.5774813;
-    fProtonGyromagn_RatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
-    fProtonGyromagn_RatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 3.7e-06;
+    fProtonGyromagneticRatioOver2Pi_in_MHz_T_1 : LREAL := 42.5774813;
+    fProtonGyromagneticRatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
+    fProtonGyromagneticRatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 3.7e-06;
     
     // proton magn. moment (J T^-1)
     // Uncertainty: 1.2e-33
-    fProtonMagn_Moment_in_J_T_1 : LREAL := 1.41060671e-26;
-    fProtonMagn_Moment_in_J_T_1_Units : STRING := 'J T^-1';
-    fProtonMagn_Moment_in_J_T_1_Uncertainty : LREAL := 1.2e-33;
+    fProtonMagneticMoment_in_J_T_1 : LREAL := 1.41060671e-26;
+    fProtonMagneticMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fProtonMagneticMoment_in_J_T_1_Uncertainty : LREAL := 1.2e-33;
     
     // proton magn. moment to Bohr magneton ratio
     // Uncertainty: 1.5e-11
-    fProtonMagn_MomentToBohrMagnetonRatio : LREAL := 0.001521032206;
-    fProtonMagn_MomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.5e-11;
+    fProtonMagneticMomentToBohrMagnetonRatio : LREAL := 0.001521032206;
+    fProtonMagneticMomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.5e-11;
     
     // proton magn. moment to nuclear magneton ratio
     // Uncertainty: 2.8e-08
-    fProtonMagn_MomentToNuclearMagnetonRatio : LREAL := 2.792847351;
-    fProtonMagn_MomentToNuclearMagnetonRatio_Uncertainty : LREAL := 2.8e-08;
+    fProtonMagneticMomentToNuclearMagnetonRatio : LREAL := 2.792847351;
+    fProtonMagneticMomentToNuclearMagnetonRatio_Uncertainty : LREAL := 2.8e-08;
     
     // proton magn. shielding correction
     // Uncertainty: 1.1e-08
-    fProtonMagn_ShieldingCorrection : LREAL := 2.5689e-05;
-    fProtonMagn_ShieldingCorrection_Uncertainty : LREAL := 1.1e-08;
+    fProtonMagneticShieldingCorrection : LREAL := 2.5689e-05;
+    fProtonMagneticShieldingCorrection_Uncertainty : LREAL := 1.1e-08;
     
     // proton-neutron magn. moment ratio
     // Uncertainty: 3.4e-07
-    fProtonNeutronMagn_MomentRatio : LREAL := -1.45989805;
-    fProtonNeutronMagn_MomentRatio_Uncertainty : LREAL := 3.4e-07;
+    fProtonNeutronMagneticMomentRatio : LREAL := -1.45989805;
+    fProtonNeutronMagneticMomentRatio_Uncertainty : LREAL := 3.4e-07;
     
     // shielded helion gyromagn. ratio (s^-1 T^-1)
     // Uncertainty: 2.4
-    fShieldedHelionGyromagn_Ratio_in_s_1_T_1 : LREAL := 203789456.9;
-    fShieldedHelionGyromagn_Ratio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
-    fShieldedHelionGyromagn_Ratio_in_s_1_T_1_Uncertainty : LREAL := 2.4;
+    fShieldedHelionGyromagneticRatio_in_s_1_T_1 : LREAL := 203789456.9;
+    fShieldedHelionGyromagneticRatio_in_s_1_T_1_Units : STRING := 's^-1 T^-1';
+    fShieldedHelionGyromagneticRatio_in_s_1_T_1_Uncertainty : LREAL := 2.4;
     
     // shielded helion gyromagn. ratio over 2 pi (MHz T^-1)
     // Uncertainty: 2.8e-06
-    fShieldedHelionGyromagn_RatioOver2Pi_in_MHz_T_1 : LREAL := 32.4341015;
-    fShieldedHelionGyromagn_RatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
-    fShieldedHelionGyromagn_RatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 2.8e-06;
+    fShieldedHelionGyromagneticRatioOver2Pi_in_MHz_T_1 : LREAL := 32.4341015;
+    fShieldedHelionGyromagneticRatioOver2Pi_in_MHz_T_1_Units : STRING := 'MHz T^-1';
+    fShieldedHelionGyromagneticRatioOver2Pi_in_MHz_T_1_Uncertainty : LREAL := 2.8e-06;
     
     // shielded helion magn. moment (J T^-1)
     // Uncertainty: 9.3e-34
-    fShieldedHelionMagn_Moment_in_J_T_1 : LREAL := -1.074553024e-26;
-    fShieldedHelionMagn_Moment_in_J_T_1_Units : STRING := 'J T^-1';
-    fShieldedHelionMagn_Moment_in_J_T_1_Uncertainty : LREAL := 9.3e-34;
+    fShieldedHelionMagneticMoment_in_J_T_1 : LREAL := -1.074553024e-26;
+    fShieldedHelionMagneticMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fShieldedHelionMagneticMoment_in_J_T_1_Uncertainty : LREAL := 9.3e-34;
     
     // shielded helion magn. moment to Bohr magneton ratio
     // Uncertainty: 1.4e-11
-    fShieldedHelionMagn_MomentToBohrMagnetonRatio : LREAL := -0.001158671474;
-    fShieldedHelionMagn_MomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.4e-11;
+    fShieldedHelionMagneticMomentToBohrMagnetonRatio : LREAL := -0.001158671474;
+    fShieldedHelionMagneticMomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.4e-11;
     
     // shielded helion magn. moment to nuclear magneton ratio
     // Uncertainty: 2.5e-08
-    fShieldedHelionMagn_MomentToNuclearMagnetonRatio : LREAL := -2.127497723;
-    fShieldedHelionMagn_MomentToNuclearMagnetonRatio_Uncertainty : LREAL := 2.5e-08;
+    fShieldedHelionMagneticMomentToNuclearMagnetonRatio : LREAL := -2.127497723;
+    fShieldedHelionMagneticMomentToNuclearMagnetonRatio_Uncertainty : LREAL := 2.5e-08;
     
     // shielded helion to proton magn. moment ratio
     // Uncertainty: 1.2e-08
-    fShieldedHelionToProtonMagn_MomentRatio : LREAL := -0.761766562;
-    fShieldedHelionToProtonMagn_MomentRatio_Uncertainty : LREAL := 1.2e-08;
+    fShieldedHelionToProtonMagneticMomentRatio : LREAL := -0.761766562;
+    fShieldedHelionToProtonMagneticMomentRatio_Uncertainty : LREAL := 1.2e-08;
     
     // shielded helion to shielded proton magn. moment ratio
     // Uncertainty: 3.3e-09
-    fShieldedHelionToShieldedProtonMagn_MomentRatio : LREAL := -0.7617861313;
-    fShieldedHelionToShieldedProtonMagn_MomentRatio_Uncertainty : LREAL := 3.3e-09;
+    fShieldedHelionToShieldedProtonMagneticMomentRatio : LREAL := -0.7617861313;
+    fShieldedHelionToShieldedProtonMagneticMomentRatio_Uncertainty : LREAL := 3.3e-09;
     
     // shielded proton magn. moment (J T^-1)
     // Uncertainty: 1.2e-33
-    fShieldedProtonMagn_Moment_in_J_T_1 : LREAL := 1.41057047e-26;
-    fShieldedProtonMagn_Moment_in_J_T_1_Units : STRING := 'J T^-1';
-    fShieldedProtonMagn_Moment_in_J_T_1_Uncertainty : LREAL := 1.2e-33;
+    fShieldedProtonMagneticMoment_in_J_T_1 : LREAL := 1.41057047e-26;
+    fShieldedProtonMagneticMoment_in_J_T_1_Units : STRING := 'J T^-1';
+    fShieldedProtonMagneticMoment_in_J_T_1_Uncertainty : LREAL := 1.2e-33;
     
     // shielded proton magn. moment to Bohr magneton ratio
     // Uncertainty: 1.6e-11
-    fShieldedProtonMagn_MomentToBohrMagnetonRatio : LREAL := 0.001520993132;
-    fShieldedProtonMagn_MomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.6e-11;
+    fShieldedProtonMagneticMomentToBohrMagnetonRatio : LREAL := 0.001520993132;
+    fShieldedProtonMagneticMomentToBohrMagnetonRatio_Uncertainty : LREAL := 1.6e-11;
     
     // shielded proton magn. moment to nuclear magneton ratio
     // Uncertainty: 3e-08
-    fShieldedProtonMagn_MomentToNuclearMagnetonRatio : LREAL := 2.792775604;
-    fShieldedProtonMagn_MomentToNuclearMagnetonRatio_Uncertainty : LREAL := 3e-08;
+    fShieldedProtonMagneticMomentToNuclearMagnetonRatio : LREAL := 2.792775604;
+    fShieldedProtonMagneticMomentToNuclearMagnetonRatio_Uncertainty : LREAL := 3e-08;
     
     // {220} lattice spacing of silicon (m)
     // Uncertainty: 3.2e-18

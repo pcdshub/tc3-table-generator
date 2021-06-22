@@ -11,11 +11,19 @@ constants = []
 for item in scipy.constants.physical_constants.items():
     description, (value, units, uncertainty) = item
 
-    tc3_name = inflection.camelize(description.replace(" ", "_"))
+    # Start off with the description and go from there
+    tc3_name = description
+
+    # abbreviations
+    tc3_name = tc3_name.replace("gyromagn.", "Gyromagnetic")
+    tc3_name = tc3_name.replace("magn.", "Magnetic")
+
+    tc3_name = inflection.camelize(tc3_name.replace(" ", "_"))
     if units:
         unit_desc = units.replace(" ", "_")
         tc3_name = f"{tc3_name}_in_{unit_desc}"
-    # abbreviations
+
+    # other abbreviations
     tc3_name = tc3_name.replace(". ", "")
 
     # e.g., volt-amps
