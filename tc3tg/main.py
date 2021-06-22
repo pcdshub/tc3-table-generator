@@ -1,4 +1,5 @@
 """Create Beckhoff TwinCAT PLC source code from a dataframe."""
+import dataclasses
 import logging
 import pathlib
 import uuid
@@ -8,7 +9,7 @@ import jinja2
 import numpy as np
 import pandas as pd
 
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple, Optional
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +17,17 @@ logger = logging.getLogger(__name__)
 # PLC file output settings:
 MODULE_PATH = pathlib.Path(__file__).resolve().parent
 LUT_TEMPLATE = MODULE_PATH / "templates" / "plc" / "table.TcPOU"
+CONSTANT_GVL_TEMPLATE = MODULE_PATH / "templates" / "plc" / "constants.TcGVL"
 TEST_TEMPLATE = MODULE_PATH / "templates" / "plc" / "tests.TcPOU"
+
+
+@dataclasses.dataclass
+class Constant:
+    name: str
+    description: str
+    value: float
+    units: str
+    uncertainty: Optional[float] = None
 
 
 def df_data_to_code(df):
@@ -42,6 +53,16 @@ def guid_from_table(fb_name, dfs):
     hashed = hashlib.md5(maybe_unique.encode("utf-8")).digest()
     logger.debug(
         "Generating UUID from string: %s -> %s", maybe_unique, hashed
+    )
+    return uuid.UUID(bytes=hashed)
+
+
+def guid_from_string(name):
+    """Get a deterministic GUID from a string that should be unique."""
+    # Sorry, we only have 16 bytes in our UUIDs...
+    hashed = hashlib.md5(name.encode("utf-8")).digest()
+    logger.debug(
+        "Generating UUID from string: %s -> %s", name, hashed
     )
     return uuid.UUID(bytes=hashed)
 
@@ -200,3 +221,57 @@ def generate_lookup_table_source(
     )
     test_code = template.render(template_kw)
     return code, test_code
+
+
+def generate_constant_table(
+    gvl_name: str,
+    constants: List[Constant],
+    *,
+    data_type: str = "LREAL",
+    guid: str = "",
+) -> Tuple[str, str]:
+    """
+    Generate a GVL constant table, with no interpolation.
+
+    Parameters
+    ----------
+    gvl_name : str
+        The GVL block name.
+
+    constants : list of Constant
+        Dictionary of name to dataframe.
+
+    data_type : str, optional
+        The data type. Defaults to LREAL.
+
+    guid : str, optional
+        The function block globally unique identifier / GUID.
+
+    table_prefix : str, optional
+        The name with which to prefix all table arrays.
+
+    lookup_input : str, optional
+        The function block input variable name - the indexed parameter which
+        you're looking up in the table.
+
+    lookup_index : int, optional
+        The per-row array index of the lookup value.  Not fully supported
+        just let; leave this at 0 for now.
+
+    row_delta_variable : str, optional
+        The auto-generated code delta variable.  Not necessary to set, unless
+        you really want to customize the output.
+
+    Returns
+    -------
+    code : str
+        The constant table source code.
+    """
+    template_kw = dict(
+        gvl_name=gvl_name,
+        gvl_guid=guid or guid_from_string(gvl_name),
+        data_type=data_type,
+        constants=constants,
+    )
+    template = jinja2.Template(open(CONSTANT_GVL_TEMPLATE, "rt").read())
+    return template.render(template_kw)
