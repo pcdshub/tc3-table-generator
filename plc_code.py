@@ -77,12 +77,28 @@ def _dataframes_to_template_list(
     table_prefix: str,
     dataframes: Dict[str, pd.DataFrame],
     test_values: int = 10,
+    lookup_index: int = 0,
 ) -> List[Dict[str, Any]]:
     """
     Take the dataframes dictionary and add on some useful things for the
     jinja template.
     """
-    assert len(set(tuple(df.columns) for df in dataframes.values())) == 1
+    column_sets = set(tuple(df.columns) for df in dataframes.values())
+    if len(column_sets) != 1:
+        raise ValueError(
+            f"Columns are not consistent between all tables: {column_sets}"
+        )
+    for name, df in dataframes.items():
+        lookup_values = tuple(df[df.columns[lookup_index]])
+        if tuple(sorted(lookup_values)) != lookup_values:
+            raise ValueError(
+                f"Table {name} column {lookup_index} is not sorted"
+            )
+
+        if len(set(lookup_values)) != len(lookup_values):
+            raise ValueError(
+                f"Table {name} column {lookup_index} has repeated entries"
+            )
 
     return [
         dict(
@@ -164,7 +180,8 @@ def generate_lookup_table_source(
     sample_df = list(dataframes.values())[0]
     template_kw = dict(
         fb_name=fb_name,
-        tables=_dataframes_to_template_list(table_prefix, dataframes),
+        tables=_dataframes_to_template_list(table_prefix, dataframes,
+                                            lookup_index=lookup_index),
         pou_guid=guid or guid_from_table(fb_name, dataframes),
         outputs=sample_df.columns[1:],
         data_type=data_type,

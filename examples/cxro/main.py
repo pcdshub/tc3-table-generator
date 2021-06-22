@@ -29,7 +29,7 @@ for idx, fn in enumerate(pathlib.Path("data").glob("*.nff")):
     if identifier in included_materials:
         dataframes[identifier] = pd.read_csv(
             fn, delimiter="\t", converters={col: decimal.Decimal for col in columns}
-        ).rename(columns=columns)
+        ).rename(columns=columns).sort_values("fEnergyEV")
     # if idx == 1:
     #     break
 
