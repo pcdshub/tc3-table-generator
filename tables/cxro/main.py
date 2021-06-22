@@ -3,11 +3,7 @@ import pathlib
 import sys
 
 import pandas as pd
-
-# Bad practices from the get-go, nice!
-sys.path.insert(0, "../../")  # noqa
-
-import plc_code
+import tc3tg
 
 columns = {
     "E(eV)": "fEnergyEV",
@@ -36,7 +32,7 @@ for idx, fn in enumerate(pathlib.Path("data").glob("*.nff")):
 assert set(dataframes) == included_materials
 
 
-lut_source, test_source = plc_code.generate_lookup_table_source(
+lut_source, test_source = tc3tg.generate_lookup_table_source(
     fb_name="FB_AbsorptionLUT",
     dataframes=dataframes,
     table_prefix="fTable_",
