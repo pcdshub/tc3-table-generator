@@ -4,6 +4,9 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL CONSTANT
     {% for var in constants %}
+{%- if var.value == None %}
+(*
+{%- endif %}
     // {{ var.description or var.name }}{% if var.units %} ({{ var.units }}){% endif %}
 {%- if var.uncertainty %}
     // Uncertainty: {{ var.uncertainty }}
@@ -14,6 +17,12 @@ VAR_GLOBAL CONSTANT
 {%- endif %}
 {%- if var.uncertainty %}
     {{ var.name }}_Uncertainty : {{ data_type }} := {{ var.uncertainty }};
+{%- endif %}
+{%- if var.caveat %}
+    {{ var.name }}_Caveat : STRING := '{{ var.caveat }}';
+{%- endif %}
+{%- if var.value == None %}
+*)
 {%- endif %}
     {% endfor %}
 END_VAR]]></Declaration>

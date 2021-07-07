@@ -28,6 +28,7 @@ class Constant:
     value: float
     units: str
     uncertainty: Optional[float] = None
+    caveat: Optional[str] = None
 
 
 def df_data_to_code(df):
