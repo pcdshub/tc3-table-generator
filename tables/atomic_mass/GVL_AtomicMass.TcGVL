@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <GVL Name="GVL_AtomicMass" Id="{671c6a63-a8d2-8a08-b45c-c0987cf64db0}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL CONSTANT
+    
+    // Atomic mass of n (neutron)
+    fMass_n : LREAL := 1.00866491597;
+    
+    // Atomic mass of H (hydrogen)
+    fMass_H : LREAL := 1.00794;
+    
+    // Atomic mass of He (helium)
+    fMass_He : LREAL := 4.002602;
+    
+    // Atomic mass of Li (lithium)
+    fMass_Li : LREAL := 6.941;
+    
+    // Atomic mass of Be (beryllium)
+    fMass_Be : LREAL := 9.012182;
+    
+    // Atomic mass of B (boron)
+    fMass_B : LREAL := 10.811;
+    
+    // Atomic mass of C (carbon)
+    fMass_C : LREAL := 12.0107;
+    
+    // Atomic mass of N (nitrogen)
+    fMass_N : LREAL := 14.0067;
+    
+    // Atomic mass of O (oxygen)
+    fMass_O : LREAL := 15.9994;
+    
+    // Atomic mass of F (fluorine)
+    fMass_F : LREAL := 18.9984032;
+    
+    // Atomic mass of Ne (neon)
+    fMass_Ne : LREAL := 20.1797;
+    
+    // Atomic mass of Na (sodium)
+    fMass_Na : LREAL := 22.98977;
+    
+    // Atomic mass of Mg (magnesium)
+    fMass_Mg : LREAL := 24.305;
+    
+    // Atomic mass of Al (aluminum)
+    fMass_Al : LREAL := 26.981538;
+    
+    // Atomic mass of Si (silicon)
+    fMass_Si : LREAL := 28.0855;
+    
+    // Atomic mass of P (phosphorus)
+    fMass_P : LREAL := 30.973761;
+    
+    // Atomic mass of S (sulfur)
+    fMass_S : LREAL := 32.065;
+    
+    // Atomic mass of Cl (chlorine)
+    fMass_Cl : LREAL := 35.453;
+    
+    // Atomic mass of Ar (argon)
+    fMass_Ar : LREAL := 39.948;
+    
+    // Atomic mass of K (potassium)
+    fMass_K : LREAL := 39.0983;
+    
+    // Atomic mass of Ca (calcium)
+    fMass_Ca : LREAL := 40.078;
+    
+    // Atomic mass of Sc (scandium)
+    fMass_Sc : LREAL := 44.95591;
+    
+    // Atomic mass of Ti (titanium)
+    fMass_Ti : LREAL := 47.867;
+    
+    // Atomic mass of V (vanadium)
+    fMass_V : LREAL := 50.9415;
+    
+    // Atomic mass of Cr (chromium)
+    fMass_Cr : LREAL := 51.9961;
+    
+    // Atomic mass of Mn (manganese)
+    fMass_Mn : LREAL := 54.938049;
+    
+    // Atomic mass of Fe (iron)
+    fMass_Fe : LREAL := 55.845;
+    
+    // Atomic mass of Co (cobalt)
+    fMass_Co : LREAL := 58.9332;
+    
+    // Atomic mass of Ni (nickel)
+    fMass_Ni : LREAL := 58.6934;
+    
+    // Atomic mass of Cu (copper)
+    fMass_Cu : LREAL := 63.546;
+    
+    // Atomic mass of Zn (zinc)
+    fMass_Zn : LREAL := 65.409;
+    
+    // Atomic mass of Ga (gallium)
+    fMass_Ga : LREAL := 69.723;
+    
+    // Atomic mass of Ge (germanium)
+    fMass_Ge : LREAL := 72.64;
+    
+    // Atomic mass of As (arsenic)
+    fMass_As : LREAL := 74.9216;
+    
+    // Atomic mass of Se (selenium)
+    fMass_Se : LREAL := 78.96;
+    
+    // Atomic mass of Br (bromine)
+    fMass_Br : LREAL := 79.904;
+    
+    // Atomic mass of Kr (krypton)
+    fMass_Kr : LREAL := 83.798;
+    
+    // Atomic mass of Rb (rubidium)
+    fMass_Rb : LREAL := 85.4678;
+    
+    // Atomic mass of Sr (strontium)
+    fMass_Sr : LREAL := 87.62;
+    
+    // Atomic mass of Y (yttrium)
+    fMass_Y : LREAL := 88.90585;
+    
+    // Atomic mass of Zr (zirconium)
+    fMass_Zr : LREAL := 91.224;
+    
+    // Atomic mass of Nb (niobium)
+    fMass_Nb : LREAL := 92.90638;
+    
+    // Atomic mass of Mo (molybdenum)
+    fMass_Mo : LREAL := 95.94;
+    
+    // Atomic mass of Tc (technetium)
+    fMass_Tc : LREAL := 98;
+    
+    // Atomic mass of Ru (ruthenium)
+    fMass_Ru : LREAL := 101.07;
+    
+    // Atomic mass of Rh (rhodium)
+    fMass_Rh : LREAL := 102.9055;
+    
+    // Atomic mass of Pd (palladium)
+    fMass_Pd : LREAL := 106.42;
+    
+    // Atomic mass of Ag (silver)
+    fMass_Ag : LREAL := 107.8682;
+    
+    // Atomic mass of Cd (cadmium)
+    fMass_Cd : LREAL := 112.411;
+    
+    // Atomic mass of In (indium)
+    fMass_In : LREAL := 114.818;
+    
+    // Atomic mass of Sn (tin)
+    fMass_Sn : LREAL := 118.71;
+    
+    // Atomic mass of Sb (antimony)
+    fMass_Sb : LREAL := 121.76;
+    
+    // Atomic mass of Te (tellurium)
+    fMass_Te : LREAL := 127.6;
+    
+    // Atomic mass of I (iodine)
+    fMass_I : LREAL := 126.90447;
+    
+    // Atomic mass of Xe (xenon)
+    fMass_Xe : LREAL := 131.293;
+    
+    // Atomic mass of Cs (cesium)
+    fMass_Cs : LREAL := 132.90545;
+    
+    // Atomic mass of Ba (barium)
+    fMass_Ba : LREAL := 137.327;
+    
+    // Atomic mass of La (lanthanum)
+    fMass_La : LREAL := 138.9055;
+    
+    // Atomic mass of Ce (cerium)
+    fMass_Ce : LREAL := 140.116;
+    
+    // Atomic mass of Pr (praseodymium)
+    fMass_Pr : LREAL := 140.90765;
+    
+    // Atomic mass of Nd (neodymium)
+    fMass_Nd : LREAL := 144.24;
+    
+    // Atomic mass of Pm (promethium)
+    fMass_Pm : LREAL := 145;
+    
+    // Atomic mass of Sm (samarium)
+    fMass_Sm : LREAL := 150.36;
+    
+    // Atomic mass of Eu (europium)
+    fMass_Eu : LREAL := 151.964;
+    
+    // Atomic mass of Gd (gadolinium)
+    fMass_Gd : LREAL := 157.25;
+    
+    // Atomic mass of Tb (terbium)
+    fMass_Tb : LREAL := 158.92534;
+    
+    // Atomic mass of Dy (dysprosium)
+    fMass_Dy : LREAL := 162.5;
+    
+    // Atomic mass of Ho (holmium)
+    fMass_Ho : LREAL := 164.93032;
+    
+    // Atomic mass of Er (erbium)
+    fMass_Er : LREAL := 167.259;
+    
+    // Atomic mass of Tm (thulium)
+    fMass_Tm : LREAL := 168.93421;
+    
+    // Atomic mass of Yb (ytterbium)
+    fMass_Yb : LREAL := 173.04;
+    
+    // Atomic mass of Lu (lutetium)
+    fMass_Lu : LREAL := 174.967;
+    
+    // Atomic mass of Hf (hafnium)
+    fMass_Hf : LREAL := 178.49;
+    
+    // Atomic mass of Ta (tantalum)
+    fMass_Ta : LREAL := 180.9479;
+    
+    // Atomic mass of W (tungsten)
+    fMass_W : LREAL := 183.84;
+    
+    // Atomic mass of Re (rhenium)
+    fMass_Re : LREAL := 186.207;
+    
+    // Atomic mass of Os (osmium)
+    fMass_Os : LREAL := 190.23;
+    
+    // Atomic mass of Ir (iridium)
+    fMass_Ir : LREAL := 192.217;
+    
+    // Atomic mass of Pt (platinum)
+    fMass_Pt : LREAL := 195.078;
+    
+    // Atomic mass of Au (gold)
+    fMass_Au : LREAL := 196.96655;
+    
+    // Atomic mass of Hg (mercury)
+    fMass_Hg : LREAL := 200.59;
+    
+    // Atomic mass of Tl (thallium)
+    fMass_Tl : LREAL := 204.3833;
+    
+    // Atomic mass of Pb (lead)
+    fMass_Pb : LREAL := 207.2;
+    
+    // Atomic mass of Bi (bismuth)
+    fMass_Bi : LREAL := 208.98038;
+    
+    // Atomic mass of Po (polonium)
+    fMass_Po : LREAL := 209;
+    
+    // Atomic mass of At (astatine)
+    fMass_At : LREAL := 210;
+    
+    // Atomic mass of Rn (radon)
+    fMass_Rn : LREAL := 222;
+    
+    // Atomic mass of Fr (francium)
+    fMass_Fr : LREAL := 223;
+    
+    // Atomic mass of Ra (radium)
+    fMass_Ra : LREAL := 226;
+    
+    // Atomic mass of Ac (actinium)
+    fMass_Ac : LREAL := 227;
+    
+    // Atomic mass of Th (thorium)
+    fMass_Th : LREAL := 232.0381;
+    
+    // Atomic mass of Pa (protactinium)
+    fMass_Pa : LREAL := 231.03588;
+    
+    // Atomic mass of U (uranium)
+    fMass_U : LREAL := 238.02891;
+    
+    // Atomic mass of Np (neptunium)
+    fMass_Np : LREAL := 237;
+    
+    // Atomic mass of Pu (plutonium)
+    fMass_Pu : LREAL := 244;
+    
+    // Atomic mass of Am (americium)
+    fMass_Am : LREAL := 243;
+    
+    // Atomic mass of Cm (curium)
+    fMass_Cm : LREAL := 247;
+    
+    // Atomic mass of Bk (berkelium)
+    fMass_Bk : LREAL := 247;
+    
+    // Atomic mass of Cf (californium)
+    fMass_Cf : LREAL := 251;
+    
+    // Atomic mass of Es (einsteinium)
+    fMass_Es : LREAL := 252;
+    
+    // Atomic mass of Fm (fermium)
+    fMass_Fm : LREAL := 257;
+    
+    // Atomic mass of Md (mendelevium)
+    fMass_Md : LREAL := 258;
+    
+    // Atomic mass of No (nobelium)
+    fMass_No : LREAL := 259;
+    
+    // Atomic mass of Lr (lawrencium)
+    fMass_Lr : LREAL := 262;
+    
+    // Atomic mass of Rf (rutherfordium)
+    fMass_Rf : LREAL := 261;
+    
+    // Atomic mass of Db (dubnium)
+    fMass_Db : LREAL := 262;
+    
+    // Atomic mass of Sg (seaborgium)
+    fMass_Sg : LREAL := 266;
+    
+    // Atomic mass of Bh (bohrium)
+    fMass_Bh : LREAL := 264;
+    
+    // Atomic mass of Hs (hassium)
+    fMass_Hs : LREAL := 277;
+    
+    // Atomic mass of Mt (meitnerium)
+    fMass_Mt : LREAL := 268;
+    
+    // Atomic mass of Ds (darmstadtium)
+    fMass_Ds : LREAL := 281;
+    
+    // Atomic mass of Rg (roentgenium)
+    fMass_Rg : LREAL := 272;
+    
+    // Atomic mass of Cn (copernicium)
+    fMass_Cn : LREAL := 285;
+    
+    // Atomic mass of Nh (nihonium)
+    fMass_Nh : LREAL := 286;
+    
+    // Atomic mass of Fl (flerovium)
+    fMass_Fl : LREAL := 289;
+    
+    // Atomic mass of Mc (moscovium)
+    fMass_Mc : LREAL := 289;
+    
+    // Atomic mass of Lv (livermorium)
+    fMass_Lv : LREAL := 293;
+    
+    // Atomic mass of Ts (tennessine)
+    fMass_Ts : LREAL := 294;
+    
+    // Atomic mass of Og (oganesson)
+    fMass_Og : LREAL := 294;
+    
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
