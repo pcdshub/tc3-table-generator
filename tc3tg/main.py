@@ -16,7 +16,8 @@ logger = logging.getLogger(__name__)
 
 # PLC file output settings:
 MODULE_PATH = pathlib.Path(__file__).resolve().parent
-LUT_TEMPLATE = MODULE_PATH / "templates" / "plc" / "table.TcPOU"
+LUT_CONST_TEMPLATE = MODULE_PATH / "templates" / "plc" / "table.TcPOU"
+LUT_TEMPLATE = MODULE_PATH / "templates" / "plc" / "table-init.TcPOU"
 CONSTANT_GVL_TEMPLATE = MODULE_PATH / "templates" / "plc" / "constants.TcGVL"
 TEST_TEMPLATE = MODULE_PATH / "templates" / "plc" / "tests.TcPOU"
 
@@ -31,14 +32,32 @@ class Constant:
     caveat: Optional[str] = None
 
 
-def df_data_to_code(df):
+def df_data_to_var_code(df: pd.DataFrame) -> str:
     """
     Convert dataframe data to something insertable into the TcPOU VAR block.
     """
     return "\n    ".join(
-        ", ".join(str(value) for attr, value in dict(row).items()) + ","
+        ", ".join(str(value) for value in tuple(row)) + ","
         for idx, (_, row) in enumerate(df.iterrows())
     ).rstrip(",")
+
+
+def df_data_to_code(table_name: str, df: pd.DataFrame) -> str:
+    """
+    Convert dataframe data to something insertable into the implementation
+    block.
+    """
+    rows = []
+
+    for row_idx, (_, row) in enumerate(df.iterrows()):
+        rows.append(
+            " ".join(
+                f"{table_name}[{row_idx}, {col_idx}] := {value};"
+                for col_idx, value in enumerate(row)
+            )
+        )
+
+    return "\n".join(rows)
 
 
 def guid_from_table(fb_name, dfs):
@@ -131,7 +150,8 @@ def _dataframes_to_template_list(
             first_lookup=float(df.iloc[0, 0]),
             last_lookup=float(df.iloc[-1, 0]),
             df=df,
-            data_as_code=df_data_to_code(df),
+            data_as_var_code=df_data_to_var_code(df),
+            data_as_code=df_data_to_code(table_prefix + name, df),
             test_values=generate_test_values(df, test_values),
         )
         for name, df in dataframes.items()
@@ -149,6 +169,7 @@ def generate_lookup_table_source(
     lookup_index: int = 0,
     row_delta_variable: str = "",
     test_fb_name: str = "",
+    use_var_const: bool = False,
 ) -> Tuple[str, str]:
     """
     Generate a string-keyed set of lookup tables, where output values are
@@ -191,6 +212,13 @@ def generate_lookup_table_source(
         The auto-generated code delta variable.  Not necessary to set, unless
         you really want to customize the output.
 
+    use_var_const : bool, optional
+        Store data in a VAR CONSTANT section.  Setting this to True will bloat
+        the .tmc file proportional to the size of the tables supplied.  In the
+        case of the CXRO database, this can be on the order of megabytes.  The
+        alternative is to initialize the table on the FB initialization, which
+        is the default.
+
     Returns
     -------
     code : str
@@ -211,7 +239,8 @@ def generate_lookup_table_source(
         lookup_index=lookup_index,
         row_delta=row_delta_variable or (lookup_input + "_RowDelta"),
     )
-    template = jinja2.Template(open(LUT_TEMPLATE, "rt").read())
+    template_fn = LUT_CONST_TEMPLATE if use_var_const else LUT_TEMPLATE
+    template = jinja2.Template(open(template_fn, "rt").read())
     code = template.render(template_kw)
 
     template = jinja2.Template(open(TEST_TEMPLATE, "rt").read())

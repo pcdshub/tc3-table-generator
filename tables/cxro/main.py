@@ -37,6 +37,7 @@ lut_source, test_source = tc3tg.generate_lookup_table_source(
     dataframes=dataframes,
     table_prefix="fTable_",
     lookup_input="fEnergyEV",
+    use_var_const=False,
 )
 
 with open("FB_ScatteringFactorLUT.TcPOU", "wt") as fp:

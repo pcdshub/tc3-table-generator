@@ -12,10 +12,16 @@ VAR_OUTPUT
 {%- for output in outputs %}
     {{ output }} : {{ data_type }};
 {%- endfor %}
-    bFound : BOOL;
-    bError : BOOL;
+    bError : BOOL; (* Was the table name or data invalid? *)
+    bFound : BOOL; (* Was the input found in the table? *)
+    bDone : BOOL;  (* Has the FB finished? *)
+
+    fTableLookupLow: {{data_type}}; (* The lowest accepted lookup value. *)
+    fTableLookupHigh: {{data_type}}; (* The highest accepted lookup value. *)
 END_VAR
 VAR
+
+    bInit : BOOL;
     iRowSize : UDINT;
     fRow1 : POINTER TO ARRAY[0..{{ tables[0].bounds[1] }}] OF LREAL;
     fRow2 : POINTER TO ARRAY[0..{{ tables[0].bounds[1] }}] OF LREAL;
@@ -23,22 +29,31 @@ VAR
     
     iRowCount : UDINT;
     iRowIdx : UDINT;
-    fTableLookupLow: {{data_type}};
-    fTableLookupHigh: {{data_type}};
     fSlope : {{data_type}};
-    
-END_VAR
-VAR CONSTANT
+
+    (* The data tables. These are Initialized on the first function block call. *)
 {% for table in tables %}
-    {{table.name}} : ARRAY[{{table.indices_string}}] OF {{data_type}} := [
-        {{ table.data_as_var_code | indent(4) }}
-    ];
+    {{table.name}} : ARRAY[{{table.indices_string}}] OF {{data_type}};
 {% endfor %}
+    
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
 (* WARNING: This file is auto-generated. Do not modify it.*)
+
+bError := FALSE;
+bFound := FALSE;
+bDone := FALSE;
+
+IF NOT bInit THEN
+{% for table in tables %}
+    (* Table initialization: {{ table.name }} *)
+    {{ table.data_as_code | indent(4) }}
+{% endfor %}
+    bInit := TRUE;
+END_IF
+
 (* Get correct table *)
 
 {% for table in tables %}
@@ -50,17 +65,16 @@ END_VAR
     fTableLookupHigh := {{ table.df.iloc[-1, lookup_index] }};
 {%- endfor %}
 ELSE
-    bFound := FALSE;
     bError := TRUE;
+    bDone := TRUE;
     RETURN;
 END_IF
 
-bError := FALSE;
-bFound := FALSE;
-
 IF {{ lookup_input }} < fTableLookupLow THEN
+    bDone := TRUE;
     RETURN;
 ELSIF {{ lookup_input }} > fTableLookupHigh THEN
+    bDone := TRUE;
     RETURN;
 END_IF
 
@@ -72,6 +86,7 @@ DO
         IF {{ row_delta }} <= 0.0 THEN
             bFound := TRUE;
             bError := TRUE;
+            bDone := TRUE;
         ELSE
 {% for output in outputs %}
             // Interpolate output: {{ output }}
@@ -80,6 +95,7 @@ DO
 {% endfor %} 
             bFound := TRUE;
             bError := FALSE;
+            bDone := TRUE;
         END_IF
         RETURN;
     END_IF
