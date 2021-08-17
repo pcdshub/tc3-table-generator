@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
-  <GVL Name="{{ gvl_name }}" Id="{{ '{' -}} {{ gvl_guid }} {{- '}' }}" SpecialFunc="None">
+  <GVL Name="{{ name }}" Id="{{ '{' -}} {{ guid }} {{- '}' }}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL CONSTANT
     {% for var in constants %}

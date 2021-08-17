@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+    <POU Name="{{ name }}" Id="{{ '{' -}} {{ guid }} {{- '}' }}" SpecialFunc="None">
+    <Declaration><![CDATA[
+(* WARNING: This file is auto-generated. Do not modify it.*)
+FUNCTION_BLOCK {{ name }}
+
+VAR_INPUT
+    {{ lookup_input or "sName" }} : STRING;
+END_VAR
+
+VAR_OUTPUT
+    bFound : BOOL;
+    {{ value_prefix or "f" }}Value : {{ data_type }};
+    {{ value_prefix or "f" }}Uncertainty : {{ data_type }};
+    sDescription : STRING;
+    sUnits : STRING;
+    sCaveat : STRING;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* WARNING: This file is auto-generated. Do not modify it.*)
+
+{%- set var_info = namespace(num_valid=0) %}
+{%- for var in constants %}
+    {%- if var.value != None %}
+    {%- set var_info.num_valid = var_info.num_valid + 1 %}
+{% if var_info.num_valid == 1 %}IF{% else %}ELSIF{% endif %} {{ lookup_input or "sName" }} = '{{ var.key or var.name }}' THEN
+    {{ value_prefix or "f" }}Value := {{ var.value }};{% if var.units %} (* Units: {{ var.units }} *){% endif %}
+    {{ value_prefix or "f" }}Uncertainty := {{ var.uncertainty or 0 }};
+    sDescription := '{{ var.description or '' }}';
+    sUnits := '{{ var.units }}';
+    sCaveat := '{{ var.caveat }}';
+    bFound := TRUE;
+    {%- endif %}
+{%- endfor %}
+ELSE
+    bFound := FALSE;
+    {{ value_prefix or "f" }}Value := 0;
+    {{ value_prefix or "f" }}Uncertainty := 0;
+    sDescription := '';
+    sUnits := '';
+    sCaveat := '';
+END_IF
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
