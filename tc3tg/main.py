@@ -14,11 +14,11 @@ from typing import Any, Dict, List, Tuple, Optional
 logger = logging.getLogger(__name__)
 
 
-# PLC file output settings:
 MODULE_PATH = pathlib.Path(__file__).resolve().parent
 LUT_CONST_TEMPLATE = MODULE_PATH / "templates" / "plc" / "table.TcPOU"
 LUT_TEMPLATE = MODULE_PATH / "templates" / "plc" / "table-init.TcPOU"
 CONSTANT_GVL_TEMPLATE = MODULE_PATH / "templates" / "plc" / "constants.TcGVL"
+CONSTANT_GVL_LOOKUP_TEMPLATE = MODULE_PATH / "templates" / "plc" / "constants-lookup.TcPOU"
 TEST_TEMPLATE = MODULE_PATH / "templates" / "plc" / "tests.TcPOU"
 
 
@@ -30,6 +30,7 @@ class Constant:
     units: str
     uncertainty: Optional[float] = None
     caveat: Optional[str] = None
+    key: Optional[str] = None
 
 
 def df_data_to_var_code(df: pd.DataFrame) -> str:
@@ -254,19 +255,21 @@ def generate_lookup_table_source(
 
 
 def generate_constant_table(
-    gvl_name: str,
+    name: str,
     constants: List[Constant],
     *,
     data_type: str = "LREAL",
     guid: str = "",
+    lookup_by_key: bool = False,
+    **kwargs
 ) -> Tuple[str, str]:
     """
     Generate a GVL constant table, with no interpolation.
 
     Parameters
     ----------
-    gvl_name : str
-        The GVL block name.
+    name : str
+        The code block name.
 
     constants : list of Constant
         Dictionary of name to dataframe.
@@ -292,16 +295,27 @@ def generate_constant_table(
         The auto-generated code delta variable.  Not necessary to set, unless
         you really want to customize the output.
 
+    **kwargs :
+        Additional keyword arguments to pass to or override in the template.
+
     Returns
     -------
     code : str
         The constant table source code.
     """
     template_kw = dict(
-        gvl_name=gvl_name,
-        gvl_guid=guid or guid_from_string(gvl_name),
+        name=name,
+        guid=guid or guid_from_string(name),
         data_type=data_type,
         constants=constants,
     )
-    template = jinja2.Template(open(CONSTANT_GVL_TEMPLATE, "rt").read())
+
+    template_kw.update(kwargs)
+
+    template_fn = (
+        CONSTANT_GVL_LOOKUP_TEMPLATE
+        if lookup_by_key 
+        else CONSTANT_GVL_TEMPLATE 
+    )
+    template = jinja2.Template(open(template_fn, "rt").read())
     return template.render(template_kw)

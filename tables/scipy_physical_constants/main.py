@@ -45,6 +45,7 @@ for item in scipy.constants.physical_constants.items():
         tc3tg.Constant(
             description=description,
             name=tc3_name,
+            key=description,
             units=units,
             value=value,
             uncertainty=uncertainty,
@@ -52,6 +53,11 @@ for item in scipy.constants.physical_constants.items():
     )
 
 
-gvl_source = tc3tg.generate_constant_table("GVL_PhysicalConstants", constants)
-with open("GVL_PhysicalConstants.TcGVL", "wt") as fp:
-    print(gvl_source, file=fp)
+short_name = "GVL_PhysicalConstants"
+with open(f"{short_name}.TcGVL", "wt") as fp:
+    print(tc3tg.generate_constant_table(short_name, constants), file=fp)
+
+
+short_name = "FB_PhysicalConstants"
+with open(f"{short_name}.TcPOU", "wt") as fp:
+    print(tc3tg.generate_constant_table(short_name, constants, lookup_by_key=True), file=fp)
