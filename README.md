@@ -11,3 +11,4 @@ Included tables
 * [SciPy physical constants](tables/scipy_physical_constants)
 * [Atomic Mass](tables/atomic_mass)
 * [Element Density](tables/element_density)
+* [Atomic Number](tables/atomic_number)
