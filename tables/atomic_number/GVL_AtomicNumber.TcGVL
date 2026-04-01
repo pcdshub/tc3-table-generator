@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <GVL Name="GVL_AtomicNumber" Id="{5b741cdd-569e-b83a-1530-0464e306ca7d}" SpecialFunc="None">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL CONSTANT
+    
+    // Atomic number of n (neutron)
+    fNumber_n : LREAL := 0;
+    
+    // Atomic number of H (hydrogen)
+    fNumber_H : LREAL := 1;
+    
+    // Atomic number of He (helium)
+    fNumber_He : LREAL := 2;
+    
+    // Atomic number of Li (lithium)
+    fNumber_Li : LREAL := 3;
+    
+    // Atomic number of Be (beryllium)
+    fNumber_Be : LREAL := 4;
+    
+    // Atomic number of B (boron)
+    fNumber_B : LREAL := 5;
+    
+    // Atomic number of C (carbon)
+    fNumber_C : LREAL := 6;
+    
+    // Atomic number of N (nitrogen)
+    fNumber_N : LREAL := 7;
+    
+    // Atomic number of O (oxygen)
+    fNumber_O : LREAL := 8;
+    
+    // Atomic number of F (fluorine)
+    fNumber_F : LREAL := 9;
+    
+    // Atomic number of Ne (neon)
+    fNumber_Ne : LREAL := 10;
+    
+    // Atomic number of Na (sodium)
+    fNumber_Na : LREAL := 11;
+    
+    // Atomic number of Mg (magnesium)
+    fNumber_Mg : LREAL := 12;
+    
+    // Atomic number of Al (aluminum)
+    fNumber_Al : LREAL := 13;
+    
+    // Atomic number of Si (silicon)
+    fNumber_Si : LREAL := 14;
+    
+    // Atomic number of P (phosphorus)
+    fNumber_P : LREAL := 15;
+    
+    // Atomic number of S (sulfur)
+    fNumber_S : LREAL := 16;
+    
+    // Atomic number of Cl (chlorine)
+    fNumber_Cl : LREAL := 17;
+    
+    // Atomic number of Ar (argon)
+    fNumber_Ar : LREAL := 18;
+    
+    // Atomic number of K (potassium)
+    fNumber_K : LREAL := 19;
+    
+    // Atomic number of Ca (calcium)
+    fNumber_Ca : LREAL := 20;
+    
+    // Atomic number of Sc (scandium)
+    fNumber_Sc : LREAL := 21;
+    
+    // Atomic number of Ti (titanium)
+    fNumber_Ti : LREAL := 22;
+    
+    // Atomic number of V (vanadium)
+    fNumber_V : LREAL := 23;
+    
+    // Atomic number of Cr (chromium)
+    fNumber_Cr : LREAL := 24;
+    
+    // Atomic number of Mn (manganese)
+    fNumber_Mn : LREAL := 25;
+    
+    // Atomic number of Fe (iron)
+    fNumber_Fe : LREAL := 26;
+    
+    // Atomic number of Co (cobalt)
+    fNumber_Co : LREAL := 27;
+    
+    // Atomic number of Ni (nickel)
+    fNumber_Ni : LREAL := 28;
+    
+    // Atomic number of Cu (copper)
+    fNumber_Cu : LREAL := 29;
+    
+    // Atomic number of Zn (zinc)
+    fNumber_Zn : LREAL := 30;
+    
+    // Atomic number of Ga (gallium)
+    fNumber_Ga : LREAL := 31;
+    
+    // Atomic number of Ge (germanium)
+    fNumber_Ge : LREAL := 32;
+    
+    // Atomic number of As (arsenic)
+    fNumber_As : LREAL := 33;
+    
+    // Atomic number of Se (selenium)
+    fNumber_Se : LREAL := 34;
+    
+    // Atomic number of Br (bromine)
+    fNumber_Br : LREAL := 35;
+    
+    // Atomic number of Kr (krypton)
+    fNumber_Kr : LREAL := 36;
+    
+    // Atomic number of Rb (rubidium)
+    fNumber_Rb : LREAL := 37;
+    
+    // Atomic number of Sr (strontium)
+    fNumber_Sr : LREAL := 38;
+    
+    // Atomic number of Y (yttrium)
+    fNumber_Y : LREAL := 39;
+    
+    // Atomic number of Zr (zirconium)
+    fNumber_Zr : LREAL := 40;
+    
+    // Atomic number of Nb (niobium)
+    fNumber_Nb : LREAL := 41;
+    
+    // Atomic number of Mo (molybdenum)
+    fNumber_Mo : LREAL := 42;
+    
+    // Atomic number of Tc (technetium)
+    fNumber_Tc : LREAL := 43;
+    
+    // Atomic number of Ru (ruthenium)
+    fNumber_Ru : LREAL := 44;
+    
+    // Atomic number of Rh (rhodium)
+    fNumber_Rh : LREAL := 45;
+    
+    // Atomic number of Pd (palladium)
+    fNumber_Pd : LREAL := 46;
+    
+    // Atomic number of Ag (silver)
+    fNumber_Ag : LREAL := 47;
+    
+    // Atomic number of Cd (cadmium)
+    fNumber_Cd : LREAL := 48;
+    
+    // Atomic number of In (indium)
+    fNumber_In : LREAL := 49;
+    
+    // Atomic number of Sn (tin)
+    fNumber_Sn : LREAL := 50;
+    
+    // Atomic number of Sb (antimony)
+    fNumber_Sb : LREAL := 51;
+    
+    // Atomic number of Te (tellurium)
+    fNumber_Te : LREAL := 52;
+    
+    // Atomic number of I (iodine)
+    fNumber_I : LREAL := 53;
+    
+    // Atomic number of Xe (xenon)
+    fNumber_Xe : LREAL := 54;
+    
+    // Atomic number of Cs (cesium)
+    fNumber_Cs : LREAL := 55;
+    
+    // Atomic number of Ba (barium)
+    fNumber_Ba : LREAL := 56;
+    
+    // Atomic number of La (lanthanum)
+    fNumber_La : LREAL := 57;
+    
+    // Atomic number of Ce (cerium)
+    fNumber_Ce : LREAL := 58;
+    
+    // Atomic number of Pr (praseodymium)
+    fNumber_Pr : LREAL := 59;
+    
+    // Atomic number of Nd (neodymium)
+    fNumber_Nd : LREAL := 60;
+    
+    // Atomic number of Pm (promethium)
+    fNumber_Pm : LREAL := 61;
+    
+    // Atomic number of Sm (samarium)
+    fNumber_Sm : LREAL := 62;
+    
+    // Atomic number of Eu (europium)
+    fNumber_Eu : LREAL := 63;
+    
+    // Atomic number of Gd (gadolinium)
+    fNumber_Gd : LREAL := 64;
+    
+    // Atomic number of Tb (terbium)
+    fNumber_Tb : LREAL := 65;
+    
+    // Atomic number of Dy (dysprosium)
+    fNumber_Dy : LREAL := 66;
+    
+    // Atomic number of Ho (holmium)
+    fNumber_Ho : LREAL := 67;
+    
+    // Atomic number of Er (erbium)
+    fNumber_Er : LREAL := 68;
+    
+    // Atomic number of Tm (thulium)
+    fNumber_Tm : LREAL := 69;
+    
+    // Atomic number of Yb (ytterbium)
+    fNumber_Yb : LREAL := 70;
+    
+    // Atomic number of Lu (lutetium)
+    fNumber_Lu : LREAL := 71;
+    
+    // Atomic number of Hf (hafnium)
+    fNumber_Hf : LREAL := 72;
+    
+    // Atomic number of Ta (tantalum)
+    fNumber_Ta : LREAL := 73;
+    
+    // Atomic number of W (tungsten)
+    fNumber_W : LREAL := 74;
+    
+    // Atomic number of Re (rhenium)
+    fNumber_Re : LREAL := 75;
+    
+    // Atomic number of Os (osmium)
+    fNumber_Os : LREAL := 76;
+    
+    // Atomic number of Ir (iridium)
+    fNumber_Ir : LREAL := 77;
+    
+    // Atomic number of Pt (platinum)
+    fNumber_Pt : LREAL := 78;
+    
+    // Atomic number of Au (gold)
+    fNumber_Au : LREAL := 79;
+    
+    // Atomic number of Hg (mercury)
+    fNumber_Hg : LREAL := 80;
+    
+    // Atomic number of Tl (thallium)
+    fNumber_Tl : LREAL := 81;
+    
+    // Atomic number of Pb (lead)
+    fNumber_Pb : LREAL := 82;
+    
+    // Atomic number of Bi (bismuth)
+    fNumber_Bi : LREAL := 83;
+    
+    // Atomic number of Po (polonium)
+    fNumber_Po : LREAL := 84;
+    
+    // Atomic number of At (astatine)
+    fNumber_At : LREAL := 85;
+    
+    // Atomic number of Rn (radon)
+    fNumber_Rn : LREAL := 86;
+    
+    // Atomic number of Fr (francium)
+    fNumber_Fr : LREAL := 87;
+    
+    // Atomic number of Ra (radium)
+    fNumber_Ra : LREAL := 88;
+    
+    // Atomic number of Ac (actinium)
+    fNumber_Ac : LREAL := 89;
+    
+    // Atomic number of Th (thorium)
+    fNumber_Th : LREAL := 90;
+    
+    // Atomic number of Pa (protactinium)
+    fNumber_Pa : LREAL := 91;
+    
+    // Atomic number of U (uranium)
+    fNumber_U : LREAL := 92;
+    
+    // Atomic number of Np (neptunium)
+    fNumber_Np : LREAL := 93;
+    
+    // Atomic number of Pu (plutonium)
+    fNumber_Pu : LREAL := 94;
+    
+    // Atomic number of Am (americium)
+    fNumber_Am : LREAL := 95;
+    
+    // Atomic number of Cm (curium)
+    fNumber_Cm : LREAL := 96;
+    
+    // Atomic number of Bk (berkelium)
+    fNumber_Bk : LREAL := 97;
+    
+    // Atomic number of Cf (californium)
+    fNumber_Cf : LREAL := 98;
+    
+    // Atomic number of Es (einsteinium)
+    fNumber_Es : LREAL := 99;
+    
+    // Atomic number of Fm (fermium)
+    fNumber_Fm : LREAL := 100;
+    
+    // Atomic number of Md (mendelevium)
+    fNumber_Md : LREAL := 101;
+    
+    // Atomic number of No (nobelium)
+    fNumber_No : LREAL := 102;
+    
+    // Atomic number of Lr (lawrencium)
+    fNumber_Lr : LREAL := 103;
+    
+    // Atomic number of Rf (rutherfordium)
+    fNumber_Rf : LREAL := 104;
+    
+    // Atomic number of Db (dubnium)
+    fNumber_Db : LREAL := 105;
+    
+    // Atomic number of Sg (seaborgium)
+    fNumber_Sg : LREAL := 106;
+    
+    // Atomic number of Bh (bohrium)
+    fNumber_Bh : LREAL := 107;
+    
+    // Atomic number of Hs (hassium)
+    fNumber_Hs : LREAL := 108;
+    
+    // Atomic number of Mt (meitnerium)
+    fNumber_Mt : LREAL := 109;
+    
+    // Atomic number of Ds (darmstadtium)
+    fNumber_Ds : LREAL := 110;
+    
+    // Atomic number of Rg (roentgenium)
+    fNumber_Rg : LREAL := 111;
+    
+    // Atomic number of Cn (copernicium)
+    fNumber_Cn : LREAL := 112;
+    
+    // Atomic number of Nh (nihonium)
+    fNumber_Nh : LREAL := 113;
+    
+    // Atomic number of Fl (flerovium)
+    fNumber_Fl : LREAL := 114;
+    
+    // Atomic number of Mc (moscovium)
+    fNumber_Mc : LREAL := 115;
+    
+    // Atomic number of Lv (livermorium)
+    fNumber_Lv : LREAL := 116;
+    
+    // Atomic number of Ts (tennessine)
+    fNumber_Ts : LREAL := 117;
+    
+    // Atomic number of Og (oganesson)
+    fNumber_Og : LREAL := 118;
+    
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
